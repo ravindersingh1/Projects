@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</style>
+</head>
+
+
+<body id="body" >
+
+    <form>
+        <fieldset>
+            <legend>Please choose a numeric value for Red, Green and blue color. A background with same color will be set once you click button 'Set Background Color'</legend>
+
+            Red (between 0 and 255):<br>
+            <input id = "red" type="text">
+            <br>
+
+            Green (between 0 and 255):<br>
+            <input id = "green" type="text">
+            <br>
+            Blue (between 0 and 255):<br>
+            <input id = "blue" type="text">
+            <br>
+
+            <button type="button" onclick="setColor()">Set background Color</button>
+        </fieldset>
+    </form> 
+    <br><br><br><br>
+
+
+    <form>
+        How many rows would you like <select id ="rows"name="Rows">
+        <option  value="1">1</option>
+        <option  value="2">2</option>
+        <option  value="3">3</option>
+        <option  value="4" selected>4</option>
+        <option  value="5">5</option>
+        <option  value="6">6</option>
+    </select>
+    <br><br>
+
+    How many column would you like <select id="column" name="Column">
+    <option  value="1">1</option>
+    <option  value="2">2</option>
+    <option  value="3" selected>3</option>
+    <option  value="4">4</option>
+    <option  value="5">5</option>
+    <option  value="6">6</option>
+</select>
+<br><br>
+<button type="button" onclick="drawTable()">Create</button>
+</form>
+
+<p id = "demo"></p>
+<br>
+<p id="demo1"></p>
+
+
+
+<script type="text/javascript">
+
+//function to set the backgroun color
+
+function setColor(){
+
+   cOne = document.getElementById("red").value;
+   cTwo = document.getElementById("green").value;
+   cThree = document.getElementById("blue").value;
+
+   // Checking to see if the values are null
+   if(cOne == "" || cTwo == "" || cThree == "" ){
+
+       alert("Value must not be left blank. Please fill all three values from 0 to 255");
+       return false;
+   }
+   // converting string into integer
+   var red = parseInt(cOne);
+   var green = parseInt(cTwo);
+   var blue = parseInt(cThree);
+   
+   //Checking to see if the values are out of range (0-255)
+   if(red < 0 || green < 0 || blue < 0 || red > 255 || green > 255 || blue > 255){
+
+       alert("Your Value Must Be Between 0 to 255");
+       return false;
+   }
+
+   //converting into hex values for color
+   var r   = red.toString(16);
+   var g  = green.toString(16);
+   var b  = blue.toString(16);
+   
+   // converting values into double digit if user add single digit value
+   if ( r.length ==1){ r = "0"+r;}
+   if ( g.length ==1){ g = "0"+g;}
+   if ( b.length ==1){ b = "0"+b;}
+
+   var color =   "#"+ r+g+b;
+
+   document.body.style.backgroundColor = color;
+}
+// function to draw table, once user input numbers for rows and column
+function drawTable(){
+    
+    // Cleaning the previosly drawn table
+    document.getElementById("demo").innerHTML=" ";
+    document.getElementById("demo1").innerHTML="";
+    var i ;
+    var j ;
+     
+    // getting the values from element
+    var row = document.getElementById("rows").value;
+    var col = document.getElementById("column").value;
+    
+    //converting values from string to integer
+    var r = parseInt(row);
+    var c = parseInt(col);
+    
+    //creating a new table
+    var table1=document.createElement("table");
+    table1.setAttribute("id", "sample");
+    
+    // creating table
+    for(i=0;i<r;i++)
+    {
+    	var row1=document.createElement("tr");
+    	table1.appendChild(row1);
+    	for(j=0;j<c;j++)
+    	{
+    		var xyz=i.toString()+j.toString();
+    		var column1=document.createElement("td");
+    		row1.appendChild(column1);
+            var input1=document.createElement("INPUT");
+            input1.setAttribute("type", "text");
+            input1.setAttribute("id",xyz);
+            column1.appendChild(input1);
+        }
+    }
+    // appending the table to demo section
+    document.getElementById("demo").appendChild(table1);
+    var br1=document.createElement("br");
+    document.getElementById("demo").appendChild(br1);
+    
+    //creating a button
+    var btn=document.createElement("BUTTON");
+    btn.setAttribute("id","secondbutton");
+    btn.setAttribute("type","button");
+    btn.setAttribute("onclick","createTable2()");
+    var value=document.createTextNode("Create Table");
+    btn.appendChild(value);
+    
+    // appending the button to demo section
+    document.getElementById("demo").appendChild(btn);
+}
+//function for drawing the second table, once the user has added value to first table
+function createTable2(){
+    
+    // clearing the previously drawn table
+    document.getElementById("demo1").innerHTML="";
+    var i;
+    var j;
+
+    var row = document.getElementById("rows").value;
+    var col = document.getElementById("column").value;
+
+    var r = parseInt(row);
+    var c = parseInt(col);
+
+    var table1=document.createElement("table");
+    table1.setAttribute("id", "sample1");
+    table1.setAttribute("border","3");
+    table1.setAttribute("borderColor","red");
+    
+    //drawing the table
+    for(i=0;i< r;i++)
+    {
+    	var row1=document.createElement("tr");
+    	table1.appendChild(row1);
+    	for(j=0;j< c;j++)
+    	{
+    		var xyz=i.toString()+j.toString();
+    		var column1=document.createElement("td");
+    		row1.appendChild(column1);
+    		var val=document.createTextNode(document.getElementById(xyz).value);
+    		column1.appendChild(val);
+    	}
+    }
+    //appending the table to demo1 section of the page
+    document.getElementById("demo1").appendChild(table1);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
