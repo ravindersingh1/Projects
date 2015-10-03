@@ -1,0 +1,74 @@
+body {
+font:12px arial;
+color: #222;
+text-align:center;
+padding:35px;
+background-color: #6c6b68}
+
+form, p, span {
+margin:0;
+padding:0; }
+
+input { font:12px arial; }
+
+a {
+color: black;
+text-decoration:none; }
+
+a:hover { text-decoration:none; }
+
+#wrapper, #loginform {
+margin:0 auto;
+padding-bottom:25px;
+background:#d9d8d2;
+width:504px;
+border:1px solid #afaca1; }
+
+#loginform { padding-top:18px; }
+
+#loginform p { margin: 5px; }
+
+#chatbox, #friendslist {
+text-align:left;
+margin:0 auto;
+margin-bottom:25px;
+padding:10px;
+background: #ffffff;
+height:270px;
+width:430px;
+border:1px solid #8a8982;
+overflow:auto; }
+
+.friends{
+text-align: left;
+font-weight: bold;
+}
+
+.error{ 
+color: #000000;
+font-weight: bold; 
+}
+
+#usermsg {
+width:395px;
+border:1px solid #afaca1; }
+
+.logout{ 
+float:right;
+padding-left: 10px; 
+}
+
+.clearChat{ 
+float:right;
+padding-left: 10px; 
+}
+
+#select { color: #333399; }
+
+#submit { width: 60px; }
+
+#menu { padding:12.5px 25px 12.5px 25px; }
+
+.welcome { float:left; }
+
+.msgln { margin:0 0 2px 0; }
